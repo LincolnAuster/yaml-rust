@@ -1,5 +1,9 @@
 # yaml-rust
 
+This fork contains a slightly altered API (checked are merged upstream):
+- [ ] mutable accessor methods
+- [ ] `or` function to combine nodes
+
 The missing YAML 1.2 implementation for Rust.
 
 [![Travis](https://travis-ci.org/chyh1990/yaml-rust.svg?branch=master)](https://travis-ci.org/chyh1990/yaml-rust)
