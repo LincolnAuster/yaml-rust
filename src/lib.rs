@@ -44,6 +44,8 @@
     allow(match_same_arms, should_implement_trait)
 )]
 
+#![feature(concat_idents)]
+
 extern crate linked_hash_map;
 
 pub mod emitter;

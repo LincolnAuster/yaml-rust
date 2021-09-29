@@ -204,17 +204,24 @@ macro_rules! define_as (
 pub fn $name(&self) -> Option<$t> {
     match *self {
         Yaml::$yt(v) => Some(v),
-        _ => None
+        _ => None,
     }
 }
     );
 );
 
 macro_rules! define_as_ref (
-    ($name:ident, $t:ty, $yt:ident) => (
-pub fn $name(&self) -> Option<$t> {
+    ($name:ident, $mut_name: ident, $t:ty, $yt:ident) => (
+pub fn $name(&self) -> Option<&$t> {
     match *self {
         Yaml::$yt(ref v) => Some(v),
+        _ => None
+    }
+}
+
+pub fn $mut_name(&mut self) -> Option<&mut $t> {
+    match *self {
+        Yaml::$yt(ref mut v) => Some(v),
         _ => None
     }
 }
@@ -236,9 +243,9 @@ impl Yaml {
     define_as!(as_bool, bool, Boolean);
     define_as!(as_i64, i64, Integer);
 
-    define_as_ref!(as_str, &str, String);
-    define_as_ref!(as_hash, &Hash, Hash);
-    define_as_ref!(as_vec, &Array, Array);
+    define_as_ref!(as_str, as_str_mut, str, String);
+    define_as_ref!(as_hash, as_hash_mut, Hash, Hash);
+    define_as_ref!(as_vec, as_ref_mut, Array, Array);
 
     define_into!(into_bool, bool, Boolean);
     define_into!(into_i64, i64, Integer);
