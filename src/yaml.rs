@@ -245,7 +245,7 @@ impl Yaml {
 
     define_as_ref!(as_str, as_str_mut, str, String);
     define_as_ref!(as_hash, as_hash_mut, Hash, Hash);
-    define_as_ref!(as_vec, as_ref_mut, Array, Array);
+    define_as_ref!(as_vec, as_vec_mut, Array, Array);
 
     define_into!(into_bool, bool, Boolean);
     define_into!(into_i64, i64, Integer);
